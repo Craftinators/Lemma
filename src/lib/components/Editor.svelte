@@ -4,6 +4,7 @@
     import { EditorState } from '@codemirror/state';
     import { defaultKeymap, historyKeymap, history } from '@codemirror/commands';
     import { oneDark } from '@codemirror/theme-one-dark';
+    import { latex } from 'codemirror-lang-latex';
 
     export let value = '';
 
@@ -19,6 +20,7 @@
                 highlightActiveLine(),
                 keymap.of([...defaultKeymap, ...historyKeymap]),
                 oneDark,
+                latex(),
                 EditorView.updateListener.of((update) => {
                     if (update.docChanged) {
                         value = update.state.doc.toString();
