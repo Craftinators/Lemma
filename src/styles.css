@@ -1,2 +1,96 @@
-#editor, .cm-editor { height: 100vh; }
-.cm-editor { font-size: 14px; }
+:root {
+    --bg:        #1c1815;
+    --surface:   #25201c;
+    --ink:       #e1d6c8;
+
+    --accent:    #c28f5c;
+
+    --divider:   #3a312a;
+    --gutter:    #9c8f83;
+
+    --highlight: #312923;
+    --selection: #473a30;
+}
+
+body {
+    margin: 0;
+    color: var(--ink);
+    background: var(--bg);
+}
+
+#app {
+    display: flex;
+    height: 100vh;
+}
+
+#editor,
+#preview {
+    flex: 1;
+    min-width: 0;
+    overflow: auto;
+    background: var(--bg);
+}
+
+#preview pre {
+    white-space: pre-wrap;
+}
+
+#preview .katex-display {
+    overflow-x: auto;
+}
+
+#editor {
+    border-right: 1px solid var(--divider);
+}
+
+#preview {
+    padding: 2rem;
+    font-family: "Inter", system-ui, sans-serif;
+    font-size: 1rem;
+    line-height: 1.75;
+    overflow-wrap: break-word;
+}
+
+#preview h1,
+#preview h2,
+#preview h3 {
+    color: var(--accent);
+}
+
+#preview a {
+    color: var(--accent);
+    text-decoration-thickness: 2px;
+}
+
+/* CodeMirror */
+
+.cm-editor {
+    height: 100%;
+    background: var(--surface);
+}
+
+.cm-editor .cm-content {
+    font-family: "JetBrains Mono", ui-monospace, monospace;
+    font-size: 14px;
+    color: var(--ink);
+}
+
+.cm-editor .cm-gutters {
+    background: var(--surface);
+    border: none;
+    color: var(--gutter);
+}
+
+.cm-cursor {
+    border-left: 2px solid var(--accent);
+}
+
+.cm-editor .cm-activeLineGutter {
+    background: var(--highlight);
+}
+
+::selection,
+.cm-focused .cm-selectionBackground,
+.cm-selectionBackground {
+    background: var(--selection);
+}
